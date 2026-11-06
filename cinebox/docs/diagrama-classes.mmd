@@ -1,0 +1,70 @@
+classDiagram
+    direction LR
+    class Usuario {
+        Long id
+        String nome
+        String apelido
+        String email
+        String bio
+        LocalDate dataCadastro
+        String senhaHash
+        byte[] foto
+        String fotoTipo
+    }
+    class Filme {
+        Long id
+        String titulo
+        String diretor
+        Integer anoLancamento
+        Integer duracaoMinutos
+        String sinopse
+        Capa capa
+        Set~Genero~ generos
+    }
+    class Genero {
+        Long id
+        String nome
+    }
+    class Avaliacao {
+        Long id
+        Usuario usuario
+        Filme filme
+        BigDecimal nota
+        String comentario
+        LocalDate dataAssistido
+        boolean favorito
+        boolean spoiler
+    }
+    class ListaFilmes {
+        Long id
+        String nome
+        String descricao
+        Usuario usuario
+        List~ItemLista~ itens
+    }
+    class ItemLista {
+        Long id
+        ListaFilmes lista
+        Filme filme
+        Integer posicao
+        String observacao
+    }
+    class Capa {
+        <<enumeration>>
+        ORBITA
+        AREIA
+        VIAGEM
+        CIDADE
+        CASA
+        ENCONTROS
+        RITMO
+        CONTATO
+        PADRAO
+    }
+    Usuario "1" -- "0..*" Avaliacao : escreve
+    Filme "1" -- "0..*" Avaliacao : recebe
+    Usuario "1" -- "0..*" ListaFilmes : cria
+    ListaFilmes "1" *-- "0..*" ItemLista : contém
+    Filme "1" -- "0..*" ItemLista : aparece em
+    Filme "0..*" -- "1..*" Genero : classificado por
+    Filme ..> Capa : usa

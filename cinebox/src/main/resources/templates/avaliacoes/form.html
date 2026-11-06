@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head(${titulo})}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('avaliacoes')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<a class="back-link" th:href="@{/avaliacoes}">← Voltar</a>
+<div class="page-heading"><p class="eyebrow">SUA COLEÇÃO, DO SEU JEITO</p><h1 th:text="${titulo}"></h1><p>Uma nota, uma memória ou aquela impressão que ficou depois dos créditos.</p></div>
+<p class="signed-as">Registrando como <strong th:text="${usuarioLogado.nome}"></strong>. A autoria é definida pela sua conta.</p><div class="form-layout"><form class="panel form-panel" th:object="${form}" th:action="${id == null} ? @{/avaliacoes} : @{/avaliacoes/{id}(id=${id})}" method="post">
+  <div th:replace="~{fragmentos/layout :: erros}"></div>
+  <div class="form-row"><div class="field"><label for="filmeId">Filme *</label><select id="filmeId" th:field="*{filmeId}" required th:errorclass="invalid"><option value="">Selecione…</option><option th:each="opcao : ${filmes}" th:value="${opcao.id}" th:text="${opcao.titulo}"></option></select><small class="field-error" th:if="${#fields.hasErrors('filmeId')}" th:errors="*{filmeId}"></small></div></div><div class="form-row"><div class="field"><label for="nota">Sua nota *</label><input id="nota" type="number" th:field="*{nota}" required min="0.5" max="5" step="0.5" placeholder="4,5" th:errorclass="invalid"><small class="hint">De 0,5 a 5, em intervalos de meia estrela.</small><small class="field-error" th:if="${#fields.hasErrors('nota')}" th:errors="*{nota}"></small></div><div class="field"><label for="dataAssistido">Assistido em *</label><input id="dataAssistido" type="date" th:field="*{dataAssistido}" required th:errorclass="invalid"><small class="hint"></small><small class="field-error" th:if="${#fields.hasErrors('dataAssistido')}" th:errors="*{dataAssistido}"></small></div></div><div class="field"><label for="comentario">O que ficou desse filme?</label><textarea id="comentario" th:field="*{comentario}" rows="6" maxlength="3000" th:errorclass="invalid"></textarea><small class="hint">Até 3000 caracteres.</small><small class="field-error" th:if="${#fields.hasErrors('comentario')}" th:errors="*{comentario}"></small></div><div class="checkbox-grid"><label class="check-label"><input type="checkbox" th:field="*{favorito}"><span>♥ Um dos meus favoritos</span></label><label class="check-label"><input type="checkbox" th:field="*{spoiler}"><span>Meu comentário contém spoilers</span></label></div>
+  <div class="form-actions"><button class="button" type="submit">Salvar</button><a class="button button-outline" th:href="@{/avaliacoes}">Cancelar</a></div>
+</form><aside class="form-aside"><span class="eyebrow">VALE LEMBRAR</span><h2>Seu olhar vira memória.</h2><p>Você pode avaliar cada filme uma vez. A avaliação é vinculada automaticamente à sua conta. Para mudar a nota, edite a avaliação existente.</p><p>A data não pode ser futura. Comentários com spoilers ficam recolhidos até que alguém escolha abri-los.</p><p>Cadastre primeiro um filme se o catálogo estiver vazio.</p><div class="aside-decoration" aria-hidden="true">✦</div></aside></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

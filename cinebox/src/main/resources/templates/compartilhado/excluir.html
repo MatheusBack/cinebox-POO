@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head(${titulo})}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<section class="confirm-panel panel"><span class="confirm-icon" aria-hidden="true">!</span><p class="eyebrow">ANTES DE CONTINUAR</p><h1 th:text="${titulo}"></h1><p>Você está prestes a excluir:</p><strong class="delete-name" th:text="${nome}"></strong><p th:text="${explicacao}"></p><form method="post" th:action="@{${acao}}"><div class="actions"><button type="submit" class="button button-danger">Confirmar exclusão</button><a class="button button-outline" th:href="@{${voltar}}">Cancelar</a></div></form></section>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

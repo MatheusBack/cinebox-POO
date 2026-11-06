@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="400" viewBox="0 0 620 400" role="img" aria-label="Sala de cinema ilustrada">
+<defs><linearGradient id="room" x2="1" y2="1"><stop stop-color="#20342e"/><stop offset="1" stop-color="#111b22"/></linearGradient><linearGradient id="light"><stop stop-color="#d1e69b" stop-opacity="0"/><stop offset="1" stop-color="#d1e69b" stop-opacity=".12"/></linearGradient><radialGradient id="screen"><stop stop-color="#e0e7bd"/><stop offset="1" stop-color="#9caf7d"/></radialGradient></defs>
+<rect x="22" y="30" width="575" height="326" rx="160" fill="url(#room)"/>
+<path d="M50 74l302 90v119L50 249Z" fill="url(#light)"/>
+<path d="M220 70l290 46v174l-290-45Z" fill="#2a4037" stroke="#63805b" stroke-width="1"/>
+<path d="M232 83l267 42v151l-267-42Z" fill="url(#screen)"/>
+<path d="M232 200l80-53 55 36 52-21 80 65v49l-267-42Z" fill="#8aa274"/>
+<path d="M232 221l113-47 81 57 73 4v41l-267-42Z" fill="#617d60"/>
+<circle cx="403" cy="142" r="15" fill="#e8edc9"/>
+<path d="M220 70l290 46m-290-31 290 46" stroke="#a2b77e" stroke-width="2" opacity=".25"/>
+<g fill="#2d3e37" stroke="#61714d" stroke-width="1"><path d="M168 262q0-15 18-13l32 5q14 2 13 18l-2 24-61-10Z"/><path d="M247 275q0-15 18-13l32 5q14 2 13 18l-2 24-61-10Z"/><path d="M326 288q0-15 18-13l32 5q14 2 13 18l-2 24-61-10Z"/><path d="M405 301q0-15 18-13l32 5q14 2 13 18l-2 24-61-10Z"/></g>
+<g fill="#3c5040" stroke="#708058" stroke-width="1.2"><path d="M109 286q0-20 21-16l38 7q17 3 16 21l-2 27-73-12Z"/><path d="M205 303q0-20 21-16l38 7q17 3 16 21l-2 27-73-12Z"/><path d="M301 320q0-20 21-16l38 7q17 3 16 21l-2 27-73-12Z"/><path d="M397 337q0-20 21-16l38 7q17 3 16 21l-2 27-73-12Z"/></g>
+<g transform="translate(62 147)"><path d="M0 0l65 8v49L0 48Z" fill="#58704d"/><path d="M65 23l20-7v41l-20-9Z" fill="#acbe81"/><circle cx="12" cy="-10" r="22" fill="#536d49" stroke="#acc185"/><circle cx="52" cy="-4" r="19" fill="#536d49" stroke="#acc185"/><g fill="#243d31"><circle cx="12" cy="-10" r="7"/><circle cx="52" cy="-4" r="6"/></g><path d="M29 53l-12 68m19-67 28 68" stroke="#485b41" stroke-width="6"/></g>
+<g fill="#b9e66c" opacity=".6"><circle cx="130" cy="76" r="2"/><circle cx="555" cy="202" r="2"/><path d="M557 86v14m-7-7h14M150 336v12m-6-6h12" stroke="#b9e66c"/></g>
+</svg>

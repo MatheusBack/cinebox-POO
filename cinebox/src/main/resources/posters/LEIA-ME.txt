@@ -1,0 +1,20 @@
+PÔSTERES INICIAIS DOS FILMES
+
+Coloque aqui as imagens dos filmes de exemplo, com EXATAMENTE estes nomes
+(extensões aceitas: .jpg .jpeg .png .webp; até 2 MB cada):
+
+  interestelar.jpg
+  duna-parte-dois.jpg
+  a-viagem-de-chihiro.jpg
+  cidade-de-deus.jpg
+  parasita.jpg
+  vidas-passadas.jpg
+  whiplash.jpg
+  a-chegada.jpg
+
+Na inicialização, todo filme que ainda NAO tem imagem recebe o arquivo com o nome
+correspondente ao seu título (minúsculas, sem acento, espaços e símbolos viram "-").
+A imagem é gravada no banco H2, igual às imagens enviadas pelo formulário.
+Filmes que já têm imagem nunca são sobrescritos.
+Para qualquer outro filme basta salvar a imagem como <titulo-em-slug>.jpg aqui.
+Depois de adicionar arquivos, reinicie o programa (mvn spring-boot:run).

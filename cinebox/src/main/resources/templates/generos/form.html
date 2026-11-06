@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head(${titulo})}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('generos')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<a class="back-link" th:href="@{/generos}">← Voltar</a>
+<div class="page-heading"><p class="eyebrow">SUA COLEÇÃO, DO SEU JEITO</p><h1 th:text="${titulo}"></h1><p>Organize o catálogo por estilos e descubra novas possibilidades.</p></div>
+<div class="form-layout"><form class="panel form-panel" th:object="${form}" th:action="${id == null} ? @{/generos} : @{/generos/{id}(id=${id})}" method="post">
+  <div th:replace="~{fragmentos/layout :: erros}"></div>
+  <div class="field"><label for="nome">Nome do gênero *</label><input id="nome" type="text" th:field="*{nome}" required maxlength="40" placeholder="Ex.: Ficção científica" th:errorclass="invalid"><small class="hint"></small><small class="field-error" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></small></div>
+  <div class="form-actions"><button class="button" type="submit">Salvar</button><a class="button button-outline" th:href="@{/generos}">Cancelar</a></div>
+</form><aside class="form-aside"><span class="eyebrow">VALE LEMBRAR</span><h2>Histórias que se encontram.</h2><p>O nome deve ser único, independentemente de maiúsculas e minúsculas.</p><p>Um gênero associado a filmes só pode ser excluído depois que as associações forem removidas.</p><div class="aside-decoration" aria-hidden="true">✦</div></aside></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

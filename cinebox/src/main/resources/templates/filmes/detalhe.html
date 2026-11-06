@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Detalhes do filme')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('filmes')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<a class="back-link" th:href="@{/filmes}">← Voltar ao catálogo</a>
+<section class="film-detail">
+  <img class="detail-poster" th:src="${filme.imagem != null} ? @{/filmes/{id}/imagem(id=${filme.id})} : @{${filme.capa.arquivo}}" th:alt="'Capa ilustrada de ' + ${filme.titulo}">
+  <div class="detail-copy"><p class="eyebrow">UMA HISTÓRIA PARA A SUA COLEÇÃO</p><h1 th:text="${filme.titulo}"></h1>
+    <p class="detail-meta"><span th:text="${filme.anoLancamento}"></span> · <span th:text="${filme.duracaoMinutos} + ' minutos'"></span> · Direção de <strong th:text="${filme.diretor}"></strong></p>
+    <div class="chips"><span class="chip" th:each="g : ${filme.generos}" th:text="${g.nome}"></span></div>
+    <p class="synopsis" th:text="${filme.sinopse}"></p>
+    <div class="average"><span class="rating big-rating" th:if="${notas[filme.id] != null}" th:text="'★ ' + ${#numbers.formatDecimal(notas[filme.id], 1, 1)}"></span><span th:text="${#lists.isEmpty(avaliacoes)} ? 'Seja a primeira pessoa a avaliar.' : ${#lists.size(avaliacoes)} + ' avaliações · média de 5 estrelas'"></span></div>
+    <div class="actions"><a class="button" th:href="@{/avaliacoes/novo(filmeId=${filme.id})}">＋ Registrar no diário</a><a class="button button-outline" th:href="@{/filmes/{id}/editar(id=${filme.id})}">Editar filme</a><a class="text-link danger-text" th:href="@{/filmes/{id}/excluir(id=${filme.id})}">Excluir</a></div>
+  </div>
+</section>
+<div class="section-heading"><div><p class="eyebrow">DEPOIS DOS CRÉDITOS</p><h2>O que ficou desse filme.</h2></div></div>
+<div class="review-grid" th:unless="${#lists.isEmpty(avaliacoes)}">
+  <article class="review-card" th:each="a : ${avaliacoes}"><div class="review-person"><span class="avatar" th:text="${#strings.toUpperCase(#strings.substring(a.usuario.nome,0,1))}"></span><div><strong th:text="${a.usuario.nome}"></strong><p th:text="'@' + ${a.usuario.apelido}"></p></div><span class="rating" th:text="'★ ' + ${#numbers.formatDecimal(a.nota,1,1)}"></span></div>
+    <p class="meta" th:text="'Assistido em ' + ${#temporals.format(a.dataAssistido,'dd/MM/yyyy')}"></p>
+    <p class="review-text" th:unless="${a.spoiler}" th:text="${a.comentario}"></p><details th:if="${a.spoiler}"><summary>Contém spoilers · revelar comentário</summary><p class="review-text" th:text="${a.comentario}"></p></details>
+    <span class="favorite" th:if="${a.favorito}">♥ Entre os favoritos</span><div class="row-actions" th:if="${a.usuario.id == usuarioLogado.id}"><a th:href="@{/avaliacoes/{id}/editar(id=${a.id})}">Editar</a><a class="danger-text" th:href="@{/avaliacoes/{id}/excluir(id=${a.id})}">Excluir</a></div>
+  </article>
+</div>
+<div class="empty-state" th:if="${#lists.isEmpty(avaliacoes)}"><h3>O primeiro olhar pode ser o seu.</h3><p>Registre sua nota e o que essa história despertou em você.</p></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

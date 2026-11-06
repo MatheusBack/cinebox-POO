@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Editar meu perfil')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('perfil')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content"><a class="back-link" th:href="@{/perfil}">← Voltar ao meu perfil</a><div class="page-heading"><p class="eyebrow">DO SEU JEITO</p><h1>Editar meu perfil.</h1><p>Seu nome, sua foto e um pouco do seu olhar sobre o cinema.</p></div>
+<div class="form-layout"><form class="panel form-panel" th:object="${form}" th:action="@{/perfil/editar}" method="post" enctype="multipart/form-data">
+  <div th:replace="~{fragmentos/layout :: erros}"></div>
+  <div class="field"><label for="nome">Nome *</label><input id="nome" th:field="*{nome}" maxlength="80" required th:errorclass="invalid"></div>
+  <div class="form-row"><div class="field"><label for="apelido">Apelido *</label><input id="apelido" th:field="*{apelido}" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_]{3,30}" required th:errorclass="invalid"></div><div class="field"><label for="email">E-mail *</label><input id="email" type="email" th:field="*{email}" maxlength="120" required th:errorclass="invalid"><small class="hint">Se você mudar, use o novo e-mail no próximo login.</small></div></div>
+  <div class="field"><label for="bio">Sobre você</label><textarea id="bio" th:field="*{bio}" rows="4" maxlength="300"></textarea><small class="hint">Até 300 caracteres.</small></div>
+  <div class="photo-edit"><img class="profile-photo photo-preview" th:src="${usuarioLogado.temFoto} ? @{/perfil/foto} : @{/img/avatar.svg}" alt="Sua foto atual"><div class="field"><label for="foto">Foto de perfil</label><input type="file" id="foto" name="foto" accept="image/png,image/jpeg"><small class="hint">PNG ou JPEG, até 2 MB e 2048 × 2048 pixels. Deixe vazio para manter a foto atual.</small></div></div>
+  <label class="check-label" th:if="${usuarioLogado.temFoto}"><input type="checkbox" name="removerFoto" value="true">Remover a foto e usar a imagem genérica</label>
+  <div class="form-actions"><button class="button" type="submit">Salvar meu perfil</button><a class="button button-outline" th:href="@{/perfil}">Cancelar</a></div>
+</form><aside class="form-aside"><p class="eyebrow">SUA IDENTIDADE</p><h2>Um perfil só seu.</h2><p>Apelido e e-mail são únicos. A foto fica armazenada no banco local do CineBox.</p><p>Você pode alterar apenas sua própria conta. Suas avaliações e listas continuam vinculadas ao mesmo perfil.</p><a class="text-link danger-text" th:href="@{/perfil/excluir}">Excluir minha conta</a><div class="aside-decoration" aria-hidden="true">✦</div></aside></div></main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

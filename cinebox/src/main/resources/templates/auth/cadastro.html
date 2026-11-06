@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Criar conta')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content"><section class="auth-layout"><div class="auth-story"><p class="eyebrow">UM DIÁRIO SÓ SEU</p><h1>Cada olhar<br>vira <em>memória.</em></h1><p>Crie uma conta para avaliar filmes, reunir listas e encontrar todas as suas sessões em um só lugar.</p><img th:src="@{/img/cinema.svg}" alt="Sala de cinema ilustrada"></div>
+<div class="panel auth-panel"><p class="eyebrow">BEM-VINDO AO CINEBOX</p><h2>Criar minha conta</h2><form th:object="${form}" th:action="@{/cadastro}" method="post">
+  <div th:replace="~{fragmentos/layout :: erros}"></div>
+  <div class="field"><label for="nome">Nome *</label><input id="nome" th:field="*{nome}" maxlength="80" autocomplete="name" required th:errorclass="invalid"></div>
+  <div class="field"><label for="apelido">Apelido *</label><input id="apelido" th:field="*{apelido}" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_]{3,30}" required th:errorclass="invalid"><small class="hint">Letras, números e sublinhados. Sem @ ou espaços.</small></div>
+  <div class="field"><label for="email">E-mail *</label><input type="email" id="email" th:field="*{email}" maxlength="120" autocomplete="email" required th:errorclass="invalid"></div>
+  <div class="form-row"><div class="field"><label for="senha">Senha *</label><input type="password" id="senha" name="senha" minlength="8" maxlength="72" autocomplete="new-password" required><small class="hint">Mínimo 8 caracteres; máximo 72 bytes UTF-8.</small></div><div class="field"><label for="confirmarSenha">Confirmar senha *</label><input type="password" id="confirmarSenha" name="confirmarSenha" minlength="8" maxlength="72" autocomplete="new-password" required></div></div>
+  <button class="button full-width" type="submit">Criar minha conta →</button>
+</form><p class="auth-switch">Já tem conta? <a class="text-link" th:href="@{/login}">Entrar</a></p></div></section></main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

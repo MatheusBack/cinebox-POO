@@ -1,0 +1,56 @@
+CINEBOX — VERSÃO COM LOGIN E PERFIL INDIVIDUAL
+
+ENTREGA: somente código-fonte e documentação. Nada foi instalado, iniciado,
+baixado, publicado ou sincronizado para preparar esta reformulação.
+Aplicação, compilação e testes NÃO executados. Não há JAR compilado.
+
+PARA VOCÊ EXECUTAR NO SEU AMBIENTE
+1. Extraia o ZIP inteiro e entre na pasta cinebox (onde está pom.xml).
+2. Tenha JDK 17/21 e Maven 3.9+. Java 8 não funciona.
+3. Execute: mvn spring-boot:run
+   Alternativa Windows: iniciar.bat
+4. Acesse http://127.0.0.1:8080
+5. Clique em Criar conta, cadastre-se e faça login com seu e-mail e senha.
+6. Use Meu perfil no topo. O botão Sair da conta encerra a sessão.
+
+O Maven poderá baixar dependências públicas quando VOCÊ o executar.
+O aplicativo usa H2 local. Não há integração com serviços da Docol,
+CDNs, APIs de filmes, serviços de identidade ou servidores externos.
+
+O QUE MUDOU
+Login e cadastro reais com Spring Security; senha BCrypt; páginas restritas;
+avaliações automáticas para a conta da sessão; perfil com seus filmes e notas;
+foto no banco com avatar genérico; CSRF e proteção da autoria dos registros.
+
+CONTAS/BANCO DA VERSÃO ANTIGA
+Pare o programa antigo, faça backup de data e copie essa pasta para esta versão.
+Avaliações e listas antigas mantêm IDs e autores. Contas antigas sem senha
+precisam da ativação local explicada no README. Não há senha padrão.
+Os perfis fictícios dos exemplos também não possuem senha: crie sua conta.
+
+TESTAR
+mvn test
+Veja docs/ROTEIRO-DE-TESTES.md para os testes manuais com duas contas.
+
+GERAR JAR
+mvn clean package
+java -jar target/cinebox-1.0.0.jar
+
+PROTÓTIPOS VISUAIS (sem persistência)
+Abra prototipos/mapa.html. O sistema real é o código Spring em src/main.
+
+
+IMAGENS DOS FILMES
+No cadastro ou edição de filmes, use o campo "Pôster do filme" para enviar uma imagem JPG, PNG ou WEBP de até 2 MB. A imagem é guardada no banco H2 junto com os dados do filme. Ao editar, se não escolher outra imagem, a imagem atual será mantida.
+
+CADASTRO DE FILMES (passo a passo)
+Entre na conta > aba Explorar > botão "＋ Cadastrar filme" (ou http://127.0.0.1:8080/filmes/novo).
+Preencha título, direção, ano, duração, sinopse, escolha o gênero (marque um já existente OU digite um novo
+no campo "Ou crie um novo gênero"; para vários, separe por vírgula) e envie o pôster (JPG/PNG/WEBP até 2 MB).
+Tudo é salvo no banco H2 em data/cinebox.mv.db e continua aparecendo quando o projeto é aberto de novo.
+IMPORTANTE: abra sempre o projeto a partir da mesma pasta (onde está o pom.xml), senão o Java cria/usa
+outra pasta data/ e parece que os filmes sumiram. Não apague a pasta data/ nem o arquivo cinebox.mv.db.
+
+PÔSTERES INICIAIS
+Coloque as imagens em src/main/resources/posters/ (nomes em src/main/resources/posters/LEIA-ME.txt).
+Ao iniciar, os filmes sem imagem recebem o pôster correspondente e ele é gravado no banco.

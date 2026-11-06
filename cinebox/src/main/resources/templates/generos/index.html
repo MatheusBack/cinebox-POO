@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Gêneros')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('generos')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<div class="page-heading heading-actions"><div><p class="eyebrow">OS MUITOS JEITOS DE CONTAR</p><h1>Gêneros.</h1><p>Encontre o fio que conecta as suas histórias favoritas.</p></div><a class="button" th:href="@{/generos/novo}">＋ Novo gênero</a></div>
+<div class="panel table-wrap" th:unless="${#lists.isEmpty(generos)}"><table><caption class="sr-only">Gêneros cadastrados</caption><thead><tr><th scope="col">Gênero</th><th scope="col">Explorar</th><th scope="col" class="align-right">Gerenciar</th></tr></thead><tbody><tr th:each="g : ${generos}"><td class="table-title"><span class="genre-mark" aria-hidden="true">✦</span><span th:text="${g.nome}"></span></td><td><a class="text-link" th:href="@{/filmes(generoId=${g.id})}">Ver filmes →</a></td><td><div class="row-actions align-right"><a th:href="@{/generos/{id}/editar(id=${g.id})}">Editar</a><a class="danger-text" th:href="@{/generos/{id}/excluir(id=${g.id})}">Excluir</a></div></td></tr></tbody></table></div>
+<div class="empty-state" th:if="${#lists.isEmpty(generos)}"><h2>Vamos dar nome às histórias?</h2><p>Cadastre um gênero para começar a organizar os filmes.</p><a class="button" th:href="@{/generos/novo}">Novo gênero</a></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

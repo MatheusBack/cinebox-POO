@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: ENCONTROS">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4a6672"/><stop offset="1" stop-color="#172d41"/></linearGradient><radialGradient id="glow"><stop stop-color="#e9dac4" stop-opacity=".6"/><stop offset="1" stop-color="#e9dac4" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#172d41" stop-opacity="0"/><stop offset="1" stop-color="#172d41" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<path d="M0 120h64v302H0Zm74-45h51v348H74Zm70 89h45v259h-45Zm156-54h100v313H300Zm-70 40h53v273h-53Z" fill="#314c60"/>
+<g fill="#eac88f" opacity=".55"><path d="M15 147h8v12h-8zm21 0h8v12h-8zm52-20h8v14h-8zm0 35h8v14h-8zm69 33h9v15h-9zm153-44h8v15h-8zm28 33h8v15h-8zm28-33h8v15h-8z"/></g>
+<path d="M190 210h24L330 600H60Z" fill="#66747a"/>
+<path d="M202 290l-4 25m0 22-5 33m-1 28-8 48" stroke="#d8c69f" stroke-width="2" opacity=".6"/>
+<g fill="#142635"><circle cx="139" cy="346" r="11"/><path d="M128 358h22l9 61h-40Z"/><path d="M125 411h9l-3 52h-9zm18 0h9l5 52h-10Z"/><circle cx="250" cy="339" r="11"/><path d="M240 350h22l8 60h-40Z"/><path d="M236 404h10l-2 55h-9zm18 0h9l6 55h-10Z"/></g>
+<path d="M70 279v106m0-111q0-21 24-21m-24 21q0-21-24-21" fill="none" stroke="#b8b193" stroke-width="3"/>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#e9dac4" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#e9dac4" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">ENCONTROS</text>
+<text x="200" y="542" fill="#e9dac4" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">TUDO O QUE PODERIA TER SIDO</text>
+<path d="M160 570h80" stroke="#e9dac4" stroke-width=".7" opacity=".5"/></svg>

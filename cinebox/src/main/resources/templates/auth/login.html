@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Entrar')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content"><section class="auth-layout"><div class="auth-story"><p class="eyebrow">BOM TER VOCÊ DE VOLTA</p><h1>Suas histórias<br>têm um <em>lugar.</em></h1><p>Entre para continuar seu diário, reencontrar favoritos e guardar o que o cinema deixa em você.</p><img th:src="@{/img/cinema.svg}" alt="Sala de cinema ilustrada"></div>
+<div class="panel auth-panel"><p class="eyebrow">SUA CONTA CINEBOX</p><h2>Entrar</h2><p>Use seu e-mail e sua senha.</p>
+  <div class="alert alert-error" role="alert" th:if="${param.erro}">E-mail ou senha inválidos. Confira os dados e tente novamente.</div>
+  <div class="alert alert-success" role="status" th:if="${param.saiu}">Você saiu da sua conta.</div>
+  <div class="alert alert-success" role="status" th:if="${param.contaExcluida}">Sua conta foi excluída.</div>
+  <form th:action="@{/login}" method="post">
+    <div class="field"><label for="email">E-mail</label><input type="email" id="email" name="email" autocomplete="username" maxlength="120" required autofocus></div>
+    <div class="field"><label for="senha">Senha</label><input type="password" id="senha" name="senha" autocomplete="current-password" required></div>
+    <button type="submit" class="button full-width">Entrar na minha conta →</button>
+  </form><p class="auth-switch">Sua primeira sessão? <a th:href="@{/cadastro}" class="text-link">Crie uma conta</a></p>
+</div></section></main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

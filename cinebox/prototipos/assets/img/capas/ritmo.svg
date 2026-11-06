@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: RITMO">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a77545"/><stop offset="1" stop-color="#1c2021"/></linearGradient><radialGradient id="glow"><stop stop-color="#ead6af" stop-opacity=".6"/><stop offset="1" stop-color="#ead6af" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#1c2021" stop-opacity="0"/><stop offset="1" stop-color="#1c2021" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<circle cx="205" cy="255" r="141" fill="url(#glow)" opacity=".6"/>
+<ellipse cx="195" cy="339" rx="93" ry="72" fill="#212727" stroke="#ac9675" stroke-width="5"/><ellipse cx="195" cy="339" rx="77" ry="58" fill="#37403d"/>
+<ellipse cx="92" cy="269" rx="65" ry="13" fill="#cfaa64"/><path d="M92 277v145" stroke="#645b4a" stroke-width="4"/>
+<ellipse cx="306" cy="236" rx="71" ry="15" fill="#c59c54" transform="rotate(-9 306 236)"/><path d="M306 247v175" stroke="#645b4a" stroke-width="4"/>
+<ellipse cx="174" cy="250" rx="35" ry="18" fill="#9a784f"/><path d="M139 250v45q35 30 70 0v-45" fill="#68422f" stroke="#b09267" stroke-width="3"/>
+<path d="M150 121l96 177m-6-173L137 299" stroke="#dec59a" stroke-width="6"/>
+<path d="M0 448h400" stroke="#c8ae7b" stroke-width="1" opacity=".4"/>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#ead6af" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#ead6af" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">RITMO</text>
+<text x="200" y="542" fill="#ead6af" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">ATÉ A ÚLTIMA BATIDA</text>
+<path d="M160 570h80" stroke="#ead6af" stroke-width=".7" opacity=".5"/></svg>

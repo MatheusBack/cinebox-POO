@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Detalhes da lista')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('listas')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<a class="back-link" th:href="@{/listas}">← Voltar às listas</a>
+<div class="page-heading heading-actions"><div><p class="eyebrow" th:text="'UMA CURADORIA DE @' + ${lista.usuario.apelido}"></p><h1 th:text="${lista.nome}"></h1><p class="preserve-lines" th:text="${lista.descricao}"></p></div><div class="actions" th:if="${lista.usuario.id == usuarioLogado.id}"><a class="button button-outline" th:href="@{/listas/{id}/editar(id=${lista.id})}">Editar lista</a><a class="text-link danger-text" th:href="@{/listas/{id}/excluir(id=${lista.id})}">Excluir lista</a></div></div>
+<div class="list-detail-layout" th:classappend="${lista.usuario.id != usuarioLogado.id} ? 'list-readonly' : ''"><section aria-label="Filmes da lista"><p class="results-label" th:text="${#lists.size(lista.itens)} + ' filmes nesta lista'"></p>
+<article class="list-item panel" th:each="item : ${lista.itens}"><span class="item-position" th:text="${item.posicao}"></span><a th:href="@{/filmes/{id}(id=${item.filme.id})}"><img th:src="${item.filme.imagem != null} ? @{/filmes/{id}/imagem(id=${item.filme.id})} : @{${item.filme.capa.arquivo}}" th:alt="${item.filme.titulo}"></a><div class="list-item-copy"><h2><a th:href="@{/filmes/{id}(id=${item.filme.id})}" th:text="${item.filme.titulo}"></a></h2><p class="meta"><span th:text="${item.filme.anoLancamento}"></span> · <span th:text="${item.filme.duracaoMinutos} + ' min'"></span></p><p class="preserve-lines" th:text="${item.observacao}"></p><div class="row-actions" th:if="${lista.usuario.id == usuarioLogado.id}"><a th:href="@{/listas/{id}/itens/{itemId}/editar(id=${lista.id}, itemId=${item.id})}">Editar item</a><a class="danger-text" th:href="@{/listas/{id}/itens/{itemId}/excluir(id=${lista.id}, itemId=${item.id})}">Remover</a></div></div></article>
+<div class="empty-state" th:if="${#lists.isEmpty(lista.itens)}"><h2>Ainda cabe a primeira história.</h2><p>O autor da lista pode adicionar filmes a esta coleção.</p></div>
+</section><aside class="panel add-item-panel" th:if="${lista.usuario.id == usuarioLogado.id}"><p class="eyebrow">MAIS UMA BOA HISTÓRIA</p><h2>Adicionar à lista</h2>
+<form th:object="${itemForm}" th:action="@{/listas/{id}/itens(id=${lista.id})}" method="post"><div th:replace="~{fragmentos/layout :: erros}"></div>
+<div class="form-row"><div class="field"><label for="filmeId">Filme *</label><select id="filmeId" th:field="*{filmeId}" required th:errorclass="invalid"><option value="">Selecione…</option><option th:each="opcao : ${filmes}" th:value="${opcao.id}" th:text="${opcao.titulo}"></option></select><small class="field-error" th:if="${#fields.hasErrors('filmeId')}" th:errors="*{filmeId}"></small></div><div class="field"><label for="posicao">Posição *</label><input id="posicao" type="number" th:field="*{posicao}" required min="1" max="9999" th:errorclass="invalid"><small class="hint"></small><small class="field-error" th:if="${#fields.hasErrors('posicao')}" th:errors="*{posicao}"></small></div></div><div class="field"><label for="observacao">Uma observação sobre o filme</label><textarea id="observacao" th:field="*{observacao}" rows="2" maxlength="300" th:errorclass="invalid"></textarea><small class="hint">Até 300 caracteres.</small><small class="field-error" th:if="${#fields.hasErrors('observacao')}" th:errors="*{observacao}"></small></div>
+<p class="hint">Posições iguais são ordenadas pelo registro mais antigo. O mesmo filme não pode se repetir nesta lista.</p><button type="submit" class="button full-width">＋ Adicionar filme</button></form></aside></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

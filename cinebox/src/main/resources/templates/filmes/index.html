@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Explorar filmes')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('filmes')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow">SEU DIÁRIO DE CINEMA</p>
+    <h1 id="hero-title">Todo filme deixa<br>uma <em>história.</em></h1>
+    <p class="hero-description">Descubra novos favoritos. Guarde suas impressões.<br class="desktop-only"> Faça do cinema uma coleção de memórias.</p>
+    <a class="button" th:href="@{/avaliacoes/novo}">Registrar o que eu vi <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="hero-visual"><img th:src="@{/img/cinema.svg}" alt="Ilustração de uma sala de cinema iluminada por um projetor"><span class="hero-caption">A PRÓXIMA SESSÃO COMEÇA AQUI</span></div>
+</section>
+<section class="stats" aria-label="Resumo do acervo">
+  <div><strong th:text="${totalFilmes}">8</strong><span>filmes no catálogo</span></div>
+  <div><strong th:text="${totalAvaliacoes}">6</strong><span>histórias registradas</span></div>
+  <div><strong th:text="${totalListas}">2</strong><span>listas para explorar</span></div>
+  <div><strong th:text="${totalPessoas}">3</strong><span>pessoas por aqui</span></div>
+</section>
+<section aria-labelledby="catalogo-title">
+  <div class="section-heading"><div><p class="eyebrow">NA SUA PRÓXIMA SESSÃO</p><h2 id="catalogo-title">Seu próximo favorito.</h2></div><a class="button button-outline" th:href="@{/filmes/novo}">＋ Cadastrar filme</a></div>
+  <form class="filters" th:action="@{/filmes}" method="get" role="search">
+    <div class="search-field"><label class="sr-only" for="busca">Buscar por título ou direção</label><span aria-hidden="true">⌕</span><input id="busca" type="search" name="q" th:value="${q}" placeholder="Busque um filme ou uma direção…" maxlength="140"></div>
+    <div><label class="sr-only" for="genero">Filtrar por gênero</label><select id="genero" name="generoId"><option value="">Todos os gêneros</option><option th:each="g : ${generos}" th:value="${g.id}" th:text="${g.nome}" th:selected="${g.id == generoId}"></option></select></div>
+    <button type="submit" class="button button-secondary">Buscar</button><a class="text-link" th:href="@{/filmes}" th:if="${!#strings.isEmpty(q) or generoId != null}">Limpar</a>
+  </form>
+  <div class="results-label"><span th:text="${#lists.size(filmes)} + ' filmes encontrados'">8 filmes encontrados</span><span>Boas histórias merecem ser lembradas.</span></div>
+  <div class="film-grid" th:unless="${#lists.isEmpty(filmes)}">
+    <article class="film-card" th:each="filme : ${filmes}">
+      <a class="poster-link" th:href="@{/filmes/{id}(id=${filme.id})}"><img class="poster" th:src="${filme.imagem != null} ? @{/filmes/{id}/imagem(id=${filme.id})} : @{${filme.capa.arquivo}}" th:alt="'Capa ilustrada de ' + ${filme.titulo}" loading="lazy"><span class="poster-overlay">Conhecer o filme ↗</span></a>
+      <div class="film-card-title"><h3><a th:href="@{/filmes/{id}(id=${filme.id})}" th:text="${filme.titulo}"></a></h3><span class="rating" th:if="${notas[filme.id] != null}" th:text="'★ ' + ${#numbers.formatDecimal(notas[filme.id], 1, 1)}"></span></div>
+      <p class="meta"><span th:text="${filme.anoLancamento}"></span><span class="meta-dot">·</span><span th:text="${filme.duracaoMinutos} + ' min'"></span></p>
+      <p class="director" th:text="${filme.diretor}"></p>
+    </article>
+  </div>
+  <div class="empty-state" th:if="${#lists.isEmpty(filmes)}"><span class="empty-icon" aria-hidden="true">▰</span><h3>Nenhum filme por aqui ainda.</h3><p>Experimente outra busca ou adicione um filme ao catálogo.</p><a class="button" th:href="@{/filmes/novo}">Cadastrar filme</a></div>
+</section>
+<aside class="bottom-callout"><span class="callout-symbol" aria-hidden="true">✦</span><div><h3>Alguns filmes merecem ficar juntos.</h3><p>Crie listas por tema, sentimento ou só pela vontade de rever.</p></div><a class="text-link" th:href="@{/listas}">Explorar listas <span aria-hidden="true">→</span></a></aside>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

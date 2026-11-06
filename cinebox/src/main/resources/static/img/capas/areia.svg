@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: AREIA">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b76937"/><stop offset="1" stop-color="#39251f"/></linearGradient><radialGradient id="glow"><stop stop-color="#f3d9ab" stop-opacity=".6"/><stop offset="1" stop-color="#f3d9ab" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#39251f" stop-opacity="0"/><stop offset="1" stop-color="#39251f" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<circle cx="230" cy="180" r="103" fill="#e0a461"/><circle cx="230" cy="180" r="70" fill="#b76c3a" opacity=".6"/>
+<path d="M-60 380Q125 170 480 340L450 650H-20Z" fill="#ce8b53"/>
+<path d="M-30 410Q170 260 450 370V600H-30Z" fill="#a76137"/>
+<path d="M-20 445Q125 330 420 440V600H-20Z" fill="#79482f"/>
+<path d="M198 285l-12 35h27Z" fill="#2a221c"/><circle cx="200" cy="281" r="4" fill="#2a221c"/>
+<path d="M200 326q-8 30-24 47m24-47q12 28 31 41" stroke="#e4b582" stroke-width="1" opacity=".5"/>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#f3d9ab" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#f3d9ab" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">AREIA</text>
+<text x="200" y="542" fill="#f3d9ab" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">O DESERTO GUARDA TODOS OS NOMES</text>
+<path d="M160 570h80" stroke="#f3d9ab" stroke-width=".7" opacity=".5"/></svg>

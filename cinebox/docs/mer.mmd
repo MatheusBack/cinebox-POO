@@ -1,0 +1,59 @@
+erDiagram
+    USUARIOS ||--o{ AVALIACOES : escreve
+    FILMES ||--o{ AVALIACOES : recebe
+    USUARIOS ||--o{ LISTAS : cria
+    LISTAS ||--o{ ITENS_LISTA : contem
+    FILMES ||--o{ ITENS_LISTA : integra
+    FILMES ||--o{ FILME_GENERO : classifica
+    GENEROS ||--o{ FILME_GENERO : associa
+    USUARIOS {
+        bigint id PK
+        varchar nome
+        varchar apelido UK
+        varchar email UK
+        varchar bio
+        date data_cadastro
+        varchar senha_hash "nullable para contas antigas"
+        blob foto "opcional"
+        varchar foto_tipo "opcional"
+    }
+    FILMES {
+        bigint id PK
+        varchar titulo
+        varchar diretor
+        integer ano_lancamento
+        integer duracao_minutos
+        varchar sinopse
+        varchar capa
+    }
+    GENEROS {
+        bigint id PK
+        varchar nome UK
+    }
+    AVALIACOES {
+        bigint id PK
+        bigint usuario_id FK "UK composta com filme_id"
+        bigint filme_id FK "UK composta com usuario_id"
+        decimal nota "precisao 2 e escala 1"
+        varchar comentario
+        date data_assistido
+        boolean favorito
+        boolean spoiler
+    }
+    LISTAS {
+        bigint id PK
+        bigint usuario_id FK
+        varchar nome
+        varchar descricao
+    }
+    ITENS_LISTA {
+        bigint id PK
+        bigint lista_id FK "UK composta com filme_id"
+        bigint filme_id FK "UK composta com lista_id"
+        integer posicao
+        varchar observacao
+    }
+    FILME_GENERO {
+        bigint filme_id PK,FK
+        bigint genero_id PK,FK
+    }

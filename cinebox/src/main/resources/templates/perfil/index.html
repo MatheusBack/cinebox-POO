@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Meu perfil')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('perfil')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content"><section class="profile-hero panel">
+  <img class="profile-photo" th:src="${perfil.temFoto} ? @{/perfil/foto} : @{/img/avatar.svg}" th:alt="'Foto de perfil de ' + ${perfil.nome}">
+  <div class="profile-identity"><p class="eyebrow">SEU LUGAR NO CINEBOX</p><h1 th:text="${perfil.nome}"></h1><p class="handle" th:text="'@' + ${perfil.apelido}"></p><p class="preserve-lines profile-bio" th:text="${perfil.bio}"></p>
+    <dl class="profile-info"><div><dt>Seu e-mail</dt><dd th:text="${perfil.email}"></dd></div><div><dt>Por aqui desde</dt><dd th:text="${#temporals.format(perfil.dataCadastro,'dd/MM/yyyy')}"></dd></div></dl>
+  </div><div class="profile-controls"><a class="button button-outline" th:href="@{/perfil/editar}">Editar meu perfil</a><form th:action="@{/logout}" method="post"><button type="submit" class="button button-secondary full-width">Sair da conta</button></form></div>
+</section>
+<section aria-labelledby="meus-filmes"><div class="section-heading"><div><p class="eyebrow">AS HISTÓRIAS QUE VOCÊ GUARDOU</p><h2 id="meus-filmes">Meus filmes avaliados.</h2><p class="profile-count" th:text="${#lists.size(avaliacoes)} + ' filmes no seu diário'"></p></div><a class="button" th:href="@{/avaliacoes/novo}">＋ Registrar filme</a></div>
+  <div class="film-grid" th:unless="${#lists.isEmpty(avaliacoes)}"><article class="film-card" th:each="a : ${avaliacoes}">
+    <a class="poster-link" th:href="@{/filmes/{id}(id=${a.filme.id})}"><img class="poster" th:src="${a.filme.imagem != null} ? @{/filmes/{id}/imagem(id=${a.filme.id})} : @{${a.filme.capa.arquivo}}" th:alt="'Capa ilustrada de ' + ${a.filme.titulo}" loading="lazy"><span class="poster-overlay">Revisitar essa história ↗</span></a>
+    <div class="film-card-title"><h3><a th:href="@{/filmes/{id}(id=${a.filme.id})}" th:text="${a.filme.titulo}"></a></h3><span class="rating" th:text="'★ ' + ${#numbers.formatDecimal(a.nota,1,1)}"></span></div>
+    <p class="meta"><span th:text="${a.filme.anoLancamento}"></span><span class="meta-dot">·</span><span th:text="'Visto em ' + ${#temporals.format(a.dataAssistido,'dd/MM/yyyy')}"></span></p>
+    <div class="row-actions profile-card-actions"><a th:href="@{/avaliacoes/{id}/editar(id=${a.id})}">Editar minha avaliação</a><span class="favorite" th:if="${a.favorito}" aria-label="Favorito">♥</span></div>
+  </article></div>
+  <div class="empty-state" th:if="${#lists.isEmpty(avaliacoes)}"><span class="empty-icon" aria-hidden="true">☆</span><h3>Sua primeira sessão começa aqui.</h3><p>Quando você avaliar um filme, ele aparecerá no seu perfil com a sua nota.</p><a class="button" th:href="@{/filmes}">Explorar o catálogo</a></div>
+</section></main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

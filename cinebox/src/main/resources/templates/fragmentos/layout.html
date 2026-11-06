@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(titulo)">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CineBox: seu catálogo, diário e listas de cinema.">
+  <title th:text="${titulo} + ' · CineBox'">CineBox</title>
+  <link rel="icon" type="image/svg+xml" th:href="@{/img/icone.svg}">
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <script defer th:src="@{/js/app.js}"></script>
+</head>
+<body>
+<header th:fragment="header(secao)" class="site-header">
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+  <div class="container header-inner">
+    <a class="brand" th:href="@{/filmes}" aria-label="CineBox, início"><span class="brand-icon" aria-hidden="true">▰</span>cinebox<span class="brand-dot">.</span></a>
+    <button th:if="${usuarioLogado != null}" class="menu-toggle" type="button" aria-label="Abrir navegação" aria-controls="navegacao" aria-expanded="false">☰</button>
+    <nav th:if="${usuarioLogado != null}" id="navegacao" class="main-nav" aria-label="Navegação principal">
+      <a th:href="@{/filmes}" th:classappend="${secao == 'filmes'} ? 'active' : ''">Explorar</a>
+      <a th:href="@{/avaliacoes}" th:classappend="${secao == 'avaliacoes'} ? 'active' : ''">Diário</a>
+      <a th:href="@{/listas}" th:classappend="${secao == 'listas'} ? 'active' : ''">Listas</a>
+      <a th:href="@{/pessoas}" th:classappend="${secao == 'pessoas'} ? 'active' : ''">Pessoas</a>
+      <a th:href="@{/generos}" th:classappend="${secao == 'generos'} ? 'active' : ''">Gêneros</a>
+    </nav>
+    <a class="profile-button" th:if="${usuarioLogado != null}" th:href="@{/perfil}" aria-label="Abrir meu perfil">
+      <img class="account-avatar" th:src="${usuarioLogado.temFoto} ? @{/perfil/foto} : @{/img/avatar.svg}" alt="">
+      <span>Meu perfil<small th:text="'@' + ${usuarioLogado.apelido}"></small></span><span aria-hidden="true">↗</span>
+    </a>
+    <div class="auth-header-links" th:unless="${usuarioLogado != null}"><a class="text-link" th:href="@{/cadastro}">Criar conta</a><a class="button button-small" th:href="@{/login}">Entrar</a></div>
+  </div>
+</header>
+<div th:fragment="mensagens" class="messages container" aria-live="polite">
+  <div class="alert alert-success" role="status" th:if="${sucesso}" th:text="${sucesso}"></div>
+  <div class="alert alert-error" role="alert" th:if="${erro}" th:text="${erro}"></div>
+</div>
+<div th:fragment="erros" class="alert alert-error" th:if="${#fields.hasErrors('*')}" role="alert">
+  <strong>Confira os dados antes de continuar.</strong>
+  <ul><li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"></li></ul>
+</div>
+<footer th:fragment="footer" class="site-footer"><div class="container footer-inner">
+  <span class="brand brand-footer">cinebox<span class="brand-dot">.</span></span>
+  <p>Um lugar para guardar o que o cinema deixa em você.</p>
+  <span class="local-label"><span aria-hidden="true">●</span> Projeto acadêmico · local</span>
+</div></footer>
+</body></html>

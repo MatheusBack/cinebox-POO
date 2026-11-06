@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: VIAGEM">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3c807e"/><stop offset="1" stop-color="#102f42"/></linearGradient><radialGradient id="glow"><stop stop-color="#f2dfb4" stop-opacity=".6"/><stop offset="1" stop-color="#f2dfb4" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#102f42" stop-opacity="0"/><stop offset="1" stop-color="#102f42" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<circle cx="300" cy="142" r="49" fill="#e6d6aa"/>
+<path d="M0 245Q60 200 125 237T270 222T430 216V600H0Z" fill="#6caaa0"/>
+<path d="M-20 330Q80 272 180 315T420 276V600H0Z" fill="#225a67"/>
+<path d="M0 395Q150 338 400 376V600H0Z" fill="#163e4f"/>
+<path d="M0 381L400 357" stroke="#d8c6a1" stroke-width="6"/>
+<g transform="translate(80 300) rotate(-3)"><rect width="230" height="75" rx="9" fill="#9c5143"/><rect x="8" y="13" width="214" height="38" rx="3" fill="#eed8a5"/>
+<path d="M40 10v46m40-46v46m40-46v46m40-46v46m40-46v46" stroke="#6b413c" stroke-width="7"/><path d="M0 64h230" stroke="#dc9c6f" stroke-width="3"/><circle cx="33" cy="77" r="8" fill="#162e38"/><circle cx="195" cy="77" r="8" fill="#162e38"/></g>
+<g fill="#c4d5b2" opacity=".65"><ellipse cx="60" cy="126" rx="80" ry="15"/><ellipse cx="170" cy="187" rx="95" ry="12"/></g>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#f2dfb4" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#f2dfb4" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">VIAGEM</text>
+<text x="200" y="542" fill="#f2dfb4" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">HÁ UM MUNDO DO OUTRO LADO</text>
+<path d="M160 570h80" stroke="#f2dfb4" stroke-width=".7" opacity=".5"/></svg>

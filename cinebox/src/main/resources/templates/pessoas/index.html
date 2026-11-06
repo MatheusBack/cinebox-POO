@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Pessoas')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('pessoas')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content"><div class="page-heading heading-actions"><div><p class="eyebrow">CINEMA É TROCA</p><h1>Cada pessoa, um olhar.</h1><p>Quem dá vida às avaliações e às listas do seu catálogo.</p></div><a class="button button-outline" th:href="@{/perfil}">Meu perfil →</a></div>
+<div class="people-grid" th:unless="${#lists.isEmpty(pessoas)}"><article class="person-card panel" th:each="p : ${pessoas}">
+  <div class="person-top"><span class="avatar avatar-large" th:text="${#strings.toUpperCase(#strings.substring(p.nome,0,1))}"></span><span class="small-label">CINÉFILO(A)</span></div>
+  <h2 th:text="${p.nome}"></h2><p class="handle" th:text="'@' + ${p.apelido}"></p><p class="person-bio" th:text="${p.bio}"></p>
+  <dl class="person-info"><dt>Por aqui desde</dt><dd th:text="${#temporals.format(p.dataCadastro,'dd/MM/yyyy')}"></dd></dl>
+  <div class="row-actions" th:if="${p.id == usuarioLogado.id}"><a th:href="@{/perfil/editar}">Editar meu perfil</a><a class="danger-text" th:href="@{/perfil/excluir}">Excluir minha conta</a></div>
+</article></div></main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

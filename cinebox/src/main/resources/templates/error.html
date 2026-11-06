@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Algo não saiu como esperado')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<section class="confirm-panel panel"><p class="error-code" th:text="${status}">500</p><h1>Vamos voltar uma cena?</h1><p>Não foi possível abrir esta página. Confira o endereço ou retorne ao catálogo.</p><a class="button" th:href="@{/filmes}">Voltar ao catálogo</a></section>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

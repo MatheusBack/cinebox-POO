@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: CINEMA">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2f4b43"/><stop offset="1" stop-color="#101d2a"/></linearGradient><radialGradient id="glow"><stop stop-color="#e2e6cc" stop-opacity=".6"/><stop offset="1" stop-color="#e2e6cc" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#101d2a" stop-opacity="0"/><stop offset="1" stop-color="#101d2a" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<circle cx="200" cy="250" r="145" fill="none" stroke="#b5cd8f" stroke-width="1" opacity=".3"/>
+<circle cx="200" cy="250" r="115" fill="none" stroke="#b5cd8f" stroke-width="1" opacity=".2"/>
+<g transform="translate(78 180) rotate(-9 120 70)"><rect x="0" y="35" width="240" height="148" rx="7" fill="#a7c57e"/><path d="M0 0h240v39H0Z" fill="#d7e1bb"/><path d="M10 0l30 39m20-39l30 39m20-39l30 39m20-39l30 39m20-39l30 39" stroke="#263c3b" stroke-width="22"/><path d="M30 85h180m-180 38h120" stroke="#345041" stroke-width="3"/></g>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#e2e6cc" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#e2e6cc" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">CINEMA</text>
+<text x="200" y="542" fill="#e2e6cc" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">CADA HISTÓRIA ABRE UM MUNDO</text>
+<path d="M160 570h80" stroke="#e2e6cc" stroke-width=".7" opacity=".5"/></svg>

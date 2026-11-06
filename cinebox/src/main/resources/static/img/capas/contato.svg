@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: CONTATO">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#748c89"/><stop offset="1" stop-color="#1b343b"/></linearGradient><radialGradient id="glow"><stop stop-color="#e7e8d2" stop-opacity=".6"/><stop offset="1" stop-color="#e7e8d2" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#1b343b" stop-opacity="0"/><stop offset="1" stop-color="#1b343b" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<path d="M0 330Q100 290 220 320T400 300V600H0Z" fill="#a4b3a5"/>
+<path d="M0 372Q160 340 400 365V600H0Z" fill="#748d84"/>
+<ellipse cx="208" cy="226" rx="75" ry="152" fill="#213939" transform="rotate(13 208 226)"/>
+<path d="M217 77Q133 207 177 373Q130 222 217 77Z" fill="#455954"/>
+<g fill="#f0e6be" opacity=".7"><ellipse cx="240" cy="351" rx="170" ry="13"/><ellipse cx="109" cy="399" rx="140" ry="15"/></g>
+<g fill="#263f3e"><circle cx="118" cy="389" r="4"/><path d="M114 395h8l3 22h-14Z"/><circle cx="283" cy="393" r="4"/><path d="M279 399h8l3 22h-14Z"/></g>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#e7e8d2" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#e7e8d2" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">CONTATO</text>
+<text x="200" y="542" fill="#e7e8d2" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">O TEMPO TEM OUTRA LINGUAGEM</text>
+<path d="M160 570h80" stroke="#e7e8d2" stroke-width=".7" opacity=".5"/></svg>

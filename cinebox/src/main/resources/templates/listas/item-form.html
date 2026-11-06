@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Editar item da lista')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('listas')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<a class="back-link" th:href="@{/listas/{id}(id=${lista.id})}">← Voltar à lista</a>
+<div class="page-heading"><p class="eyebrow" th:text="${lista.nome}"></p><h1>Editar item da lista.</h1><p>Mude o filme, a posição ou a observação.</p></div>
+<form class="panel form-panel narrow" th:object="${itemForm}" th:action="@{/listas/{id}/itens/{itemId}(id=${lista.id}, itemId=${itemId})}" method="post"><div th:replace="~{fragmentos/layout :: erros}"></div>
+<div class="form-row"><div class="field"><label for="filmeId">Filme *</label><select id="filmeId" th:field="*{filmeId}" required th:errorclass="invalid"><option value="">Selecione…</option><option th:each="opcao : ${filmes}" th:value="${opcao.id}" th:text="${opcao.titulo}"></option></select><small class="field-error" th:if="${#fields.hasErrors('filmeId')}" th:errors="*{filmeId}"></small></div><div class="field"><label for="posicao">Posição *</label><input id="posicao" type="number" th:field="*{posicao}" required min="1" max="9999" th:errorclass="invalid"><small class="hint"></small><small class="field-error" th:if="${#fields.hasErrors('posicao')}" th:errors="*{posicao}"></small></div></div><div class="field"><label for="observacao">Uma observação sobre o filme</label><textarea id="observacao" th:field="*{observacao}" rows="2" maxlength="300" th:errorclass="invalid"></textarea><small class="hint">Até 300 caracteres.</small><small class="field-error" th:if="${#fields.hasErrors('observacao')}" th:errors="*{observacao}"></small></div>
+<div class="form-actions"><button class="button" type="submit">Salvar alterações</button><a class="button button-outline" th:href="@{/listas/{id}(id=${lista.id})}">Cancelar</a></div></form>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

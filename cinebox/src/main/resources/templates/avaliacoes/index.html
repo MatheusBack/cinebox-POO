@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Diário de filmes')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('avaliacoes')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<div class="page-heading heading-actions"><div><p class="eyebrow">DEPOIS DOS CRÉDITOS</p><h1>Meu diário de cinema.</h1><p>Seus filmes, suas notas e as memórias das suas sessões.</p></div><a class="button" th:href="@{/avaliacoes/novo}">＋ Registrar filme</a></div>
+<div class="diary-list" th:unless="${#lists.isEmpty(avaliacoes)}">
+  <article class="diary-entry panel" th:each="a : ${avaliacoes}">
+    <div class="diary-date"><strong th:text="${#temporals.format(a.dataAssistido,'dd')}"></strong><span th:text="${#temporals.format(a.dataAssistido,'MM/yyyy')}"></span></div>
+    <a th:href="@{/filmes/{id}(id=${a.filme.id})}" class="diary-poster-link"><img class="diary-poster" th:src="${a.filme.imagem != null} ? @{/filmes/{id}/imagem(id=${a.filme.id})} : @{${a.filme.capa.arquivo}}" th:alt="'Capa ilustrada de ' + ${a.filme.titulo}"></a>
+    <div class="diary-copy"><div class="diary-title"><h2><a th:href="@{/filmes/{id}(id=${a.filme.id})}" th:text="${a.filme.titulo}"></a></h2><span class="rating" th:text="'★ ' + ${#numbers.formatDecimal(a.nota,1,1)}"></span><span class="favorite" th:if="${a.favorito}" aria-label="Filme favorito">♥</span></div>
+      <p class="meta"><span th:text="${a.usuario.nome}"></span><span class="meta-dot">·</span><span th:text="${a.filme.anoLancamento}"></span></p>
+      <p th:unless="${a.spoiler}" class="review-text" th:text="${a.comentario}"></p><details th:if="${a.spoiler}"><summary>Contém spoilers · revelar comentário</summary><p class="review-text" th:text="${a.comentario}"></p></details>
+      <div class="row-actions"><a th:href="@{/avaliacoes/{id}/editar(id=${a.id})}">Editar registro</a><a class="danger-text" th:href="@{/avaliacoes/{id}/excluir(id=${a.id})}">Excluir</a></div>
+    </div>
+  </article>
+</div>
+<div class="empty-state" th:if="${#lists.isEmpty(avaliacoes)}"><span class="empty-icon" aria-hidden="true">☆</span><h2>Todo diário começa com um filme.</h2><p>Escolha um filme, dê uma nota e guarde sua primeira memória.</p><a class="button" th:href="@{/avaliacoes/novo}">Registrar filme</a></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

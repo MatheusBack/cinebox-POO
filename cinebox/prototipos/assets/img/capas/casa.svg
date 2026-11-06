@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-label="Ilustração original: A CASA">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#576960"/><stop offset="1" stop-color="#0c1d22"/></linearGradient><radialGradient id="glow"><stop stop-color="#e6dfc7" stop-opacity=".6"/><stop offset="1" stop-color="#e6dfc7" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#0c1d22" stop-opacity="0"/><stop offset="1" stop-color="#0c1d22" stop-opacity=".9"/></linearGradient></defs>
+<rect width="400" height="600" fill="url(#bg)"/>
+
+<rect x="20" y="189" width="360" height="182" fill="#849082"/>
+<rect x="44" y="215" width="310" height="104" fill="#0a252a"/>
+<rect x="58" y="228" width="94" height="80" fill="#d3ba85"/>
+<rect x="161" y="228" width="82" height="80" fill="#50675d"/><rect x="252" y="228" width="89" height="80" fill="#c1ab7e"/>
+<path d="M0 355h400v110H0Z" fill="#344a38"/>
+<path d="M0 189h400v19H0Z" fill="#182e2c"/>
+<path d="M135 380h147v15H135zm15 18h146v15H150zm15 18h147v15H165zm15 18h147v15H180z" fill="#849184"/>
+<path d="M80 142v240M63 212l18-50 21 50M51 234l30-53 33 53M42 260l39-55 42 55" stroke="#142f29" stroke-width="17"/>
+<g fill="#192e2c"><circle cx="210" cy="282" r="7"/><path d="M201 292h18l5 41h-28Z"/></g>
+
+<rect y="390" width="400" height="210" fill="url(#fade)"/>
+<text x="28" y="34" fill="#e6dfc7" opacity=".7" font-family="Arial,sans-serif" font-size="8" letter-spacing="4">CINEBOX / ESTUDOS DE CINEMA</text>
+<text x="200" y="512" fill="#e6dfc7" text-anchor="middle" font-family="Georgia,serif" font-size="41" letter-spacing="5">A CASA</text>
+<text x="200" y="542" fill="#e6dfc7" opacity=".8" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="3">AS PAREDES TAMBÉM ESCUTAM</text>
+<path d="M160 570h80" stroke="#e6dfc7" stroke-width=".7" opacity=".5"/></svg>

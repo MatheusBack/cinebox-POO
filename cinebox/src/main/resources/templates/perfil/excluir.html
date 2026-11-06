@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Excluir minha conta')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('perfil')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content"><section class="confirm-panel panel"><span class="confirm-icon" aria-hidden="true">!</span><p class="eyebrow">ANTES DE CONTINUAR</p><h1>Excluir minha conta</h1><p>A exclusão é definitiva. Antes, remova suas avaliações e listas. As contas de outras pessoas não serão alteradas.</p><form th:action="@{/perfil/excluir}" method="post"><div class="field"><label for="senha">Confirme sua senha</label><input id="senha" type="password" name="senha" autocomplete="current-password" required></div><div class="actions"><button type="submit" class="button button-danger">Excluir minha conta</button><a class="button button-outline" th:href="@{/perfil}">Cancelar</a></div></form></section></main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>

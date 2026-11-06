@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Listas de filmes')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: header('listas')}"></header>
+<div th:replace="~{fragmentos/layout :: mensagens}"></div>
+<main id="conteudo" class="container main-content">
+<div class="page-heading heading-actions"><div><p class="eyebrow">CURADORIAS COM PERSONALIDADE</p><h1>Filmes que ficam juntos.</h1><p>Para um dia de chuva, para pensar na vida, para ver de novo.</p></div><a class="button" th:href="@{/listas/novo}">＋ Criar lista</a></div>
+<div class="list-grid" th:unless="${#lists.isEmpty(listas)}"><article class="list-card panel" th:each="lista : ${listas}">
+  <a class="list-mosaic" th:href="@{/listas/{id}(id=${lista.id})}" th:aria-label="'Abrir ' + ${lista.nome}"><img th:each="item, status : ${lista.itens}" th:if="${status.index < 4}" th:src="${item.filme.imagem != null} ? @{/filmes/{id}/imagem(id=${item.filme.id})} : @{${item.filme.capa.arquivo}}" th:alt="${item.filme.titulo}"><span class="mosaic-empty" th:if="${#lists.isEmpty(lista.itens)}">Sua próxima coleção começa aqui. ✦</span></a>
+  <div class="list-card-copy"><p class="eyebrow" th:text="${#lists.size(lista.itens)} + ' FILMES'"></p><h2><a th:href="@{/listas/{id}(id=${lista.id})}" th:text="${lista.nome}"></a></h2><p class="list-description" th:text="${lista.descricao}"></p><div class="list-byline"><span th:text="'Por @' + ${lista.usuario.apelido}"></span><a class="text-link" th:href="@{/listas/{id}(id=${lista.id})}">Abrir lista →</a></div><div class="row-actions" th:if="${lista.usuario.id == usuarioLogado.id}"><a th:href="@{/listas/{id}/editar(id=${lista.id})}">Editar</a><a class="danger-text" th:href="@{/listas/{id}/excluir(id=${lista.id})}">Excluir</a></div></div>
+</article></div>
+<div class="empty-state" th:if="${#lists.isEmpty(listas)}"><span class="empty-icon" aria-hidden="true">▤</span><h2>Uma boa ideia merece uma lista.</h2><p>Crie sua primeira coleção e adicione filmes na ordem que preferir.</p><a class="button" th:href="@{/listas/novo}">Criar lista</a></div>
+</main>
+<footer th:replace="~{fragmentos/layout :: footer}"></footer>
+</body></html>
